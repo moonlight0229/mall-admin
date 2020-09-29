@@ -11,8 +11,8 @@
 	
 	int noticeId = Integer.parseInt(request.getParameter("noticeId"));
 	
-	ProductDao productDao = new ProductDao();
-	productDao.deleteProduct(noticeId);
+	NoticeDao noticeDao = new NoticeDao();
+	noticeDao.deleteNotice(noticeId);
 	
 	response.sendRedirect(request.getContextPath()+"/notice/noticeList.jsp");
 %>

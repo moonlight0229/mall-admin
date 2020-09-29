@@ -27,5 +27,5 @@
 	ProductDao productDao = new ProductDao();
 	productDao.updateProduct(productId, productName, productPrice, productContent);
 	
-	response.sendRedirect(request.getContextPath()+"/product/productOne.jsp?productId="+ productId);
+	response.sendRedirect(request.getContextPath()+"/product/productOne.jsp?productId="+productId);
 %>

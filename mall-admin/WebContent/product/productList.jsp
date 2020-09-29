@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>productList</title>
+	<title>adminProductList</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -43,6 +43,7 @@
 	
 	<h1 class="display-4">상품 목록</h1>
     
+    <!-- 카테고리 별 상품목록 출력하기 -->
 	<div class="btn-group" role="group">
 		<a class="btn btn-light" href="<%=request.getContextPath()%>/product/productList.jsp">전체</a>
 			<%
@@ -54,7 +55,7 @@
 			<%
 				}
 			%>
-		</div>
+	</div>
 	
 	<a class="btn btn-light" style="float: right;" href="<%=request.getContextPath()%>/product/addProduct.jsp">상품 추가</a>
 		

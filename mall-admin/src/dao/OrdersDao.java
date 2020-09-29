@@ -4,6 +4,7 @@ import java.util.*;
 import java.sql.*;
 import commons.DBUtil;
 
+// admin_Oreders
 public class OrdersDao {
 	// 전체 주문 리스트를 출력하는 메소드
 	public ArrayList<OrdersAndProduct> selectOrdersList() throws Exception {

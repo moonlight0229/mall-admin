@@ -36,11 +36,13 @@
 		<table class="table">
 			<tr>
 				<td>제목</td>
-				<td><input type="text" class="form-control" name="noticeTitle"></td>
+				<td><input type="text" class="form-control" name="noticeTitle" value="<%=notice.getNoticeTitle()%>"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><textarea class="form-control" rows="5" cols="80" name="noticeContent"></textarea></td>
+				<td>
+					<input type="text" class="form-control" name="noticeContent" value="<%=notice.getNoticeContent()%>">
+				</td>
 			</tr>
 		</table>
 		<button type="submit" class="btn btn-success" style="float: right;">수정</button>

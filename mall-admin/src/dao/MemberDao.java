@@ -43,7 +43,7 @@ public class MemberDao {
 		conn.close();
 		return member;
 	}
-	// 카테고리를 삭제하는 메소드
+	// 회원탈퇴 메소드
 	public void deleteMember(String memberEmail) throws Exception {
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();

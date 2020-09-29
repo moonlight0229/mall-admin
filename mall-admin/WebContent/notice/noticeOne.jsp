@@ -29,12 +29,12 @@
 		<jsp:include page="/inc/menu.jsp"></jsp:include>
 	</div>
 	
-	<h1 class="display-4">상품 상세보기</h1>
+	<h1 class="display-4">공지사항 상세보기</h1>
 	<div style="float: right;">
 		<a class="btn btn-light" href="<%=request.getContextPath()%>/notice/updateNotice.jsp?noticeId=<%=notice.getNoticeId()%>">
 			수정
 		</a>
-		<a class="btn btn-danger" href="<%=request.getContextPath()%>/notice/deleteNotice.jsp?noticeId=<%=notice.getNoticeId()%>">
+		<a class="btn btn-danger" href="<%=request.getContextPath()%>/notice/deleteNoticeAction.jsp?noticeId=<%=notice.getNoticeId()%>">
 			삭제
 		</a>
 	</div>

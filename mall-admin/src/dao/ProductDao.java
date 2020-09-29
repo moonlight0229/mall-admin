@@ -50,7 +50,7 @@ public class ProductDao {
 			product.setProductPic(rs.getString("product_pic"));
 			productList.add(product);
 		}
-
+		
 		conn.close();
 		return productList;
 	}

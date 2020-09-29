@@ -4,8 +4,9 @@ import java.util.*;
 import java.sql.*;
 import commons.DBUtil;
 
+// admin_NoticeDao
 public class NoticeDao {
-	// 전체 주문 리스트를 출력하는 메소드
+	// 전체 공지사항을 출력하는 메소드
 	public ArrayList<Notice> selectNoticeList() throws Exception {
 		ArrayList<Notice> noticelist = new ArrayList<Notice>();
 		DBUtil dbUtil = new DBUtil();
@@ -26,7 +27,7 @@ public class NoticeDao {
 		return noticelist;
 	}
 	
-	// 공지사할 작성 메소드
+	// 공지사항 작성 메소드
 	public void insertNotice(Notice notice) throws Exception {
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
@@ -38,7 +39,7 @@ public class NoticeDao {
 		conn.close();
 	}
 	
-	// 공지 수정, 삭제 시 정보 출력 메소드
+	// 공지사항 상세정보 출력 메소드
 	public Notice noticeOne(int noticeId) throws Exception {
 		Notice notice = null;
 		DBUtil dbUtil = new DBUtil();
@@ -74,8 +75,8 @@ public class NoticeDao {
 		conn.close();
 	}
 	
-	// 카테고리를 삭제하는 메소드
-	public void deleteNortice(int noticeId) throws Exception {
+	// 공지사항 삭제하는 메소드
+	public void deleteNotice(int noticeId) throws Exception {
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
 		String sql = "delete from notice where notice_id=?";

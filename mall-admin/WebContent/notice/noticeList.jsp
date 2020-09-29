@@ -21,7 +21,6 @@
 	request.setCharacterEncoding("UTF-8");
 	NoticeDao noticeDao = new NoticeDao();
 	ArrayList<Notice> noticeList = noticeDao.selectNoticeList();
-	
 %>
 <div class="container">
 	<div>
