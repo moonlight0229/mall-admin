@@ -2,12 +2,12 @@
 <%@ page import="dao.*"%>
 <%@ page import="vo.*"%>
 <%
+	//admin_deleteMemberAction
 	if(session.getAttribute("loginAdminId") == null) {
 		response.sendRedirect("/mall-admin/login.jsp");
 		return;
 	}
 
-	// deleteMemberAction
 	request.setCharacterEncoding("UTF-8");
 
 	String memberEmail = request.getParameter("memberEmail");

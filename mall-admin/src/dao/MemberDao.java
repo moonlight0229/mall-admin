@@ -26,7 +26,8 @@ public class MemberDao {
 		conn.close();
 		return memberlist;
 	}
-	// 회원탈퇴시 해당 회원정보 출력
+	
+	// 회원탈퇴 시 해당 회원정보 출력
 	public Member memberOne(String memberEmail) throws Exception {
 		Member member = null;
 		DBUtil dbUtil = new DBUtil();
@@ -43,6 +44,7 @@ public class MemberDao {
 		conn.close();
 		return member;
 	}
+	
 	// 회원탈퇴 메소드
 	public void deleteMember(String memberEmail) throws Exception {
 		DBUtil dbUtil = new DBUtil();
