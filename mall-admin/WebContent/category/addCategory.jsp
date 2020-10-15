@@ -8,7 +8,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>addCategory</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script>
+	// 유효성 검사
+		$(document).ready(function(){
+			$("#btn").click(function(){
+				if($("#categoryName").val().length<1){
+					alert("카테고리 이름을 입력하세요");
+					$("#categoryName").focus(); // 입력 포커스를 categoryName 입력창으로
+					return;
+				}
+				$("#addCategoryForm").submit();
+			});
+		});
+	</script>
 </head>
 <body>
 <%
@@ -24,14 +38,14 @@
 	
 	<h1 class="display-4">카테고리 추가</h1>
 	
-	<form method="post" action="/mall-admin/category/addCategoryAction.jsp">
+	<form method="post" action="/mall-admin/category/addCategoryAction.jsp" id="addCategoryForm">
 		<table class="table table-hover">
 			<tr>
 				<td>카테고리 이름</td>
-				<td><input type="text" class="form-control" name="categoryName"></td>
+				<td><input type="text" class="form-control" name="categoryName" id="categoryName"></td>
 			</tr>
 		</table>
-		<button type="submit" class="btn btn-success" style="float: right;">카테고리 추가</button>
+		<button type="button" id="btn" class="btn btn-success" style="float: right;">카테고리 추가</button>
 	</form>
 </div>
 </body>

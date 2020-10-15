@@ -7,10 +7,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>updateNotice</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+		// 유효성 검사
+		$(document).ready(function(){
+			$("#btn").click(function(){
+				if($("#noticeTitle").val() == ""){
+					alert("제목을 입력하세요");
+					$("#noticeTitle").focus(); // 입력 포커스를 noticeTitle 입력창으로
+					return;
+				} else if($("#noticeContent").val() == ""){
+					alert("내용을 입력하세요");
+					$("#noticeContent").focus(); // 입력 포커스를 noticeContent 입력창으로
+					return;
+				}
+				$("#updateNoticeForm").submit();
+			});
+		});
+	</script>
 </head>
 <body>
 <%
@@ -32,20 +50,20 @@
 	
 	<h1 class="display-4">공지사항 수정</h1>
 	
-	<form method="post" action="<%=request.getContextPath()%>/notice/updateNoticeAction.jsp?noticeId=<%=notice.getNoticeId()%>">
+	<form method="post" action="<%=request.getContextPath()%>/notice/updateNoticeAction.jsp?noticeId=<%=notice.getNoticeId()%>" id="updateNoticeForm">
 		<table class="table">
 			<tr>
 				<td>제목</td>
-				<td><input type="text" class="form-control" name="noticeTitle" value="<%=notice.getNoticeTitle()%>"></td>
+				<td><input type="text" class="form-control" name="noticeTitle" id="noticeTitle" value="<%=notice.getNoticeTitle()%>"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
 				<td>
-					<input type="text" class="form-control" name="noticeContent" value="<%=notice.getNoticeContent()%>">
+					<input type="text" class="form-control" name="noticeContent" id="noticeContent" value="<%=notice.getNoticeContent()%>">
 				</td>
 			</tr>
 		</table>
-		<button type="submit" class="btn btn-success" style="float: right;">수정</button>
+		<button type="button" id="btn" class="btn btn-success" style="float: right;">수정</button>
 	</form>
 </div>
 </body>
