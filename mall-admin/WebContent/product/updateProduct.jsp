@@ -52,7 +52,7 @@
 		<jsp:include page="/inc/menu.jsp"></jsp:include>
 	</div>
 	
-	<h1 class="display-4">상품정보 수정</h1>
+	<h1 class="display-4 mt-3 mb-3">상품정보 수정</h1>
 	
 	<form method="post" action="<%=request.getContextPath()%>/product/updateProductAction.jsp?productId=<%=product.getProductId()%>" id=updateProductForm>
 		<table class="table table-hover">

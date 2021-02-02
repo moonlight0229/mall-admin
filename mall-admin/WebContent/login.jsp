@@ -38,32 +38,28 @@
 			}
 		%>
 		
-		<div class="jumbotron">
-			<div class="container">
-				<h1 class="display-4">관리자 로그인</h1>
-			</div>
-		</div>
-		
 		<div class="container">
-			<form method="post" action="/mall-admin/loginAction.jsp" id="loginForm">
-				<div align="center">
+			<div align="center">
+				<h1 class="display-4 mt-3 mb-3">관리자 로그인</h1>
+				
+				<form method="post" action="/mall-admin/loginAction.jsp" id="loginForm">
 					<table style="margin-top: 30px">
 						<tr>
-							<td>ID&nbsp;</td>
+							<th>ID&nbsp;</th>
 							<td><input type="text" class="form-control" name="adminId" id="adminId" value="admin@goodee.com"></td>
 						</tr>
 						<tr>
-							<td>PW&nbsp;</td>
-							<td><input type="password" class="form-control" name="adminPw" id="adminPw" value=""></td>
+							<th>PW&nbsp;</th>
+							<td><input type="password" class="form-control" name="adminPw" id="adminPw" value="1234"></td>
 						</tr>
 						<tr>
 							<td colspan="2" style="padding-top: 20px">
-								<button type="button" id= "btn" class="btn btn-success">로그인</button>
+								<button type="button" id= "btn" class="btn btn-success btn-block">로그인</button>
 							</td>
 						</tr>
 					</table>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>

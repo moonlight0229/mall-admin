@@ -18,5 +18,5 @@
 	OrdersDao ordersDao = new OrdersDao();
 	ordersDao.modifyOrdersState(ordersId, ordersState);
 	
-	response.sendRedirect("request.getContextPath()/orders/ordersList.jsp?ordersId=" + ordersId);
+	response.sendRedirect(request.getContextPath() + "/orders/ordersList.jsp");
 %>

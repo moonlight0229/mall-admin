@@ -12,23 +12,25 @@ public class OrdersDao {
 		
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
-		String sql = "select o.orders_id, o.product_id, o.orders_amount, o.orders_price, o.member_email, o.orders_addr, o.orders_state, o.orders_date, p.product_name from orders o inner join product p on o.product_id = p.product_id";
+		String sql = "select o.orders_id, o.product_id, o.orders_amount, o.orders_price, o.member_email, o.orders_addr, o.orders_state, o.orders_date, p.product_name from orders o inner join product p on o.product_id = p.product_id order by o.orders_date desc";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		ResultSet rs = stmt.executeQuery();
-				
+		
 		while(rs.next()) {
 			OrdersAndProduct oap = new OrdersAndProduct(); // oap는 ordersAndProduct의 줄임
-			oap.orders = new Orders();
-			oap.product = new Product();			
-			oap.orders.setOrdersId(rs.getInt("o.orders_id"));
-			oap.orders.setProductId(rs.getInt("o.product_id"));
-			oap.orders.setOrdersAmount(rs.getInt("o.orders_amount"));
-			oap.orders.setOrdersPrice(rs.getInt("o.orders_price"));
-			oap.orders.setMemberEmail(rs.getString("o.member_email"));
-			oap.orders.setOrdersAddr(rs.getString("o.orders_addr"));
-			oap.orders.setOrdersState(rs.getString("o.orders_state"));
-			oap.orders.setOrdersDate(rs.getString("o.orders_date"));
-			oap.product.setProductName(rs.getString("p.product_name"));
+			oap.setOrders(new Orders());
+			oap.setProduct(new Product());
+			
+			oap.getOrders().setOrdersId(rs.getInt("o.orders_id"));
+			oap.getOrders().setProductId(rs.getInt("o.product_id"));
+			oap.getOrders().setOrdersAmount(rs.getInt("o.orders_amount"));
+			oap.getOrders().setOrdersPrice(rs.getInt("o.orders_price"));
+			oap.getOrders().setMemberEmail(rs.getString("o.member_email"));
+			oap.getOrders().setOrdersAddr(rs.getString("o.orders_addr"));
+			oap.getOrders().setOrdersState(rs.getString("o.orders_state"));
+			oap.getOrders().setOrdersDate(rs.getString("o.orders_date"));
+			oap.getProduct().setProductName(rs.getString("p.product_name"));
+			
 			ordersList.add(oap);
 		}
 		conn.close();
@@ -56,24 +58,24 @@ public class OrdersDao {
 		ArrayList<OrdersAndProduct> ordersList = new ArrayList<OrdersAndProduct>();
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
-		String sql = "select o.orders_id, o.product_id, o.orders_amount, o.orders_price, o.member_email, o.orders_addr, o.orders_state, o.orders_date, p.product_name from orders o inner join product p on o.product_id=p.product_id where orders_state=?";
+		String sql = "select o.orders_id, o.product_id, o.orders_amount, o.orders_price, o.member_email, o.orders_addr, o.orders_state, o.orders_date, p.product_name from orders o inner join product p on o.product_id=p.product_id where orders_state=? order by o.orders_date desc";
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, ordersState);
 		ResultSet rs = stmt.executeQuery();
 		
 		while(rs.next()) {
 			OrdersAndProduct oap = new OrdersAndProduct(); // oap는 ordersAndProduct의 줄임
-			oap.orders= new Orders();
-			oap.product = new Product();			
-			oap.orders.setOrdersId(rs.getInt("o.orders_id"));
-			oap.orders.setProductId(rs.getInt("o.product_id"));
-			oap.orders.setOrdersAmount(rs.getInt("o.orders_amount"));
-			oap.orders.setOrdersPrice(rs.getInt("o.orders_price"));
-			oap.orders.setMemberEmail(rs.getString("o.member_email"));
-			oap.orders.setOrdersAddr(rs.getString("o.orders_addr"));
-			oap.orders.setOrdersState(rs.getString("o.orders_state"));
-			oap.orders.setOrdersDate(rs.getString("o.orders_date"));
-			oap.product.setProductName(rs.getString("p.product_name"));
+			oap.setOrders(new Orders());
+			oap.setProduct(new Product());
+			oap.getOrders().setOrdersId(rs.getInt("o.orders_id"));
+			oap.getOrders().setProductId(rs.getInt("o.product_id"));
+			oap.getOrders().setOrdersAmount(rs.getInt("o.orders_amount"));
+			oap.getOrders().setOrdersPrice(rs.getInt("o.orders_price"));
+			oap.getOrders().setMemberEmail(rs.getString("o.member_email"));
+			oap.getOrders().setOrdersAddr(rs.getString("o.orders_addr"));
+			oap.getOrders().setOrdersState(rs.getString("o.orders_state"));
+			oap.getOrders().setOrdersDate(rs.getString("o.orders_date"));
+			oap.getProduct().setProductName(rs.getString("p.product_name"));
 			ordersList.add(oap);
 		}
 		conn.close();
@@ -81,7 +83,7 @@ public class OrdersDao {
 	}
 	
 	// 주문상태 수정 시 정보를 출력하는 메소드
-	public OrdersAndProduct ordersOne(int ordersId) throws Exception {
+	public OrdersAndProduct selectOrdersOne(int ordersId) throws Exception {
 		OrdersAndProduct oap = null;
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
@@ -92,15 +94,17 @@ public class OrdersDao {
 		
 		if(rs.next()) {
 			oap = new OrdersAndProduct();
-			oap.orders.setOrdersId(rs.getInt("o.orders_id"));
-			oap.orders.setProductId(rs.getInt("o.product_id"));
-			oap.orders.setOrdersAmount(rs.getInt("o.orders_amount"));
-			oap.orders.setOrdersPrice(rs.getInt("o.orders_price"));
-			oap.orders.setMemberEmail(rs.getString("o.member_email"));
-			oap.orders.setOrdersAddr(rs.getString("o.orders_addr"));
-			oap.orders.setOrdersState(rs.getString("o.orders_state"));
-			oap.orders.setOrdersDate(rs.getString("o.orders_date"));
-			oap.product.setProductName(rs.getString("p.product_name"));
+			oap.setOrders(new Orders());
+			oap.setProduct(new Product());
+			oap.getOrders().setOrdersId(rs.getInt("o.orders_id"));
+			oap.getOrders().setProductId(rs.getInt("o.product_id"));
+			oap.getOrders().setOrdersAmount(rs.getInt("o.orders_amount"));
+			oap.getOrders().setOrdersPrice(rs.getInt("o.orders_price"));
+			oap.getOrders().setMemberEmail(rs.getString("o.member_email"));
+			oap.getOrders().setOrdersAddr(rs.getString("o.orders_addr"));
+			oap.getOrders().setOrdersState(rs.getString("o.orders_state"));
+			oap.getOrders().setOrdersDate(rs.getString("o.orders_date"));
+			oap.getProduct().setProductName(rs.getString("p.product_name"));
 		}
 		conn.close();
 		return oap;	
